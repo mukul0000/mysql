@@ -1,0 +1,165 @@
+SHOW DATABASES;
+
+CREATE DATABASE blog;
+
+use blog;
+
+CREATE table post(
+post_id integer auto_increment primary key, 
+tital varchar(50),
+content varchar(50),
+release_time INTEGER,
+author VARCHAR(50));
+
+CREATE table authors(
+id integer auto_increment primary key, 
+first_name varchar(50),
+last_name varchar(50));
+
+CREATE table comments(
+
+id integer auto_increment primary key, 
+comment_body varchar(100),
+topic varchar(50)
+
+);
+
+CREATE table tag(
+id integer auto_increment primary key, 
+tags varchar(50));
+
+drop table post;
+
+
+insert into post(tital,content,release_time,author)
+values('Education','Real',2001,'JAMES');
+
+
+insert into post(tital,content,release_time,author)
+values('Real life','Real',2002,'MACLARI');
+
+
+insert into post(tital,content,release_time,author)
+values('Mind Power','Real',2001,'MCASO');
+
+
+insert into post(tital, content, release_time, author)
+values('Humanity', 'Real', 2010, 'RAHUL');
+
+
+
+insert into post(tital,content,release_time,author)
+values('Save monney','Real',2015,'Elon');
+
+drop table blog.authors;
+
+
+drop table tag;
+
+
+
+
+
+
+
+
+drop table comments;
+
+
+
+create table author(
+id integer auto_increment primary key, 
+first_name varchar(50),
+last_name varchar(50),
+post_id integer not null,
+foreign key (post_id)REFERENCES post(post_id));
+
+insert into author (first_name,last_name,post_id) VALUES("JAMES","CLEAR",1);
+
+insert into author (first_name,last_name,post_id) VALUES("MACLARI","FORD",2);
+
+insert into author (first_name,last_name,post_id) VALUES("MCASO","ROJER",3);
+
+insert into author (first_name,last_name,post_id) VALUES("RAHUL","HONDA",4);
+
+insert into author (first_name,last_name,post_id) VALUES("ELON","EUSK",5);
+
+
+create table comment(
+id integer auto_increment primary key, 
+comment_body varchar(100),
+topic varchar(50),
+post_id integer not null,
+foreign key (post_id)REFERENCES post(post_id));
+
+insert into comment (comment_body,topic,post_id) VALUES("great","education",1);
+insert into comment (comment_body,topic,post_id) VALUES("good","education",1);
+insert into comment (comment_body,topic,post_id) VALUES("valuable","education",1);
+
+insert into comment (comment_body,topic,post_id) VALUES("valuable","real life",2);
+insert into comment (comment_body,topic,post_id) VALUES("great","real life",1);
+
+
+insert into comment (comment_body,topic,post_id) VALUES("great","mind power",3);
+insert into comment (comment_body,topic,post_id) VALUES("valuable","mind power",3);
+
+insert into comment (comment_body,topic,post_id) VALUES("valuable","humanityr",4);
+
+insert into comment (comment_body,topic,post_id) VALUES("valuable","save monney",5);
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+update tag set comment_body = "great", topic = "save", post_id = 5  where id = 10;
+
+DELETE FROM table_name WHERE condition;
+
+delete from tag where id = 12;
+
+
+
+
+
+
+
+
+create table tag(
+id integer auto_increment primary key, 
+tags varchar(50),
+post_id integer not null,
+foreign key (post_id)REFERENCES post(post_id));
+
+insert into tag(tags,post_id) values ("#education",1);
+insert into tag(tags,post_id) values ("#current sectuion of education",1);
+insert into tag(tags,post_id) values ("#importance of education",1);
+
+insert into tag(tags,post_id) values ("#life",2);
+insert into tag(tags,post_id) values ("#life_way",2);
+insert into tag(tags,post_id) values ("#life goals",2);
+
+
+insert into tag(tags,post_id) values ("#mind",3);
+insert into tag(tags,post_id) values ("#mind power",3);
+insert into tag(tags,post_id) values ("real power",3);
+
+insert into tag(tags,post_id) values ("#humanity",4);
+
+insert into tag(tags,post_id) values ("wealth",5);
+insert into tag(tags,post_id) values ("money",5);
+
+UPDATE table_name
+SET column1 = value1, column2 = value2, ...
+WHERE condition;
+
+update tag set tags = "#money", post_id = 5  where id = 12;
+
+DELETE FROM table_name WHERE condition;
+
+delete from tag where id = 12;
+
+
+
+
+
+
